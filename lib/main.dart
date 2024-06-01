@@ -1,16 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:product_app/pages/homepage.dart';
-import 'package:product_app/screens/dashboard.dart';
 import 'package:product_app/screens/splash.dart';
+import 'package:mongo_dart/mongo_dart.dart';
 
-void main() {
-  runApp(const MyApp());
+DbCollection? productsCollection;
+
+void main() async {
+  final db = await Db.create(
+      'mongodb+srv://Mike:12345@dart.gsx83ml.mongodb.net/testdb?retryWrites=true&w=majority&appName=Dart');
+
+  try {
+    await db.open();
+    print('Connected to the database');
+
+    productsCollection = db.collection('products');
+
+    runApp(MyApp());
+  } catch (e) {
+    print('Error connecting to the database: $e');
+    // Handle error connecting to the database
+  }
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

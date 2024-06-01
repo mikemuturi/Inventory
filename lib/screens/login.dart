@@ -45,14 +45,14 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Container(
-            height: 500,
-            width: 350,
-            child: Card(
-              color: Colors.white,
-              elevation: 2,
+        child: Container(
+          height: 500,
+          width: 350,
+          child: Card(
+            color: Colors.white,
+            elevation: 2,
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
